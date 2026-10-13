@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nexora: Discover more. Shop smarter. Stay protected.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12202E; --ink2:#4A5C6D; --paper:#F3F6F7; --card:#FFFFFF; --rule:#D8E0E5;
+  --teal:#0B7F86; --teal-d:#085F65; --on-teal:#FFFFFF; --saffron:#F2A33A; --coral:#C93E22; --ok:#1C8A57;
+  --hero:#12202E; --hero-fg:#F3F6F7; --tl:91%; --ts:42%; --shadow:0 1px 2px rgba(18,32,46,.08);
+  --f-head:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif; --f-body:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#E8EEF2; --ink2:#9FB0BD; --paper:#0C141B; --card:#15202A; --rule:#273644;
+    --teal:#3CC1C8; --teal-d:#7AD9DE; --on-teal:#06262A; --coral:#FF8A6E; --ok:#4CC388;
+    --hero:#0A2A33; --tl:24%; --ts:30%; --shadow:none; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E8EEF2; --ink2:#9FB0BD; --paper:#0C141B; --card:#15202A; --rule:#273644;
+  --teal:#3CC1C8; --teal-d:#7AD9DE; --on-teal:#06262A; --coral:#FF8A6E; --ok:#4CC388;
+  --hero:#0A2A33; --tl:24%; --ts:30%; --shadow:none; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px)}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.5 var(--f-body);min-height:100%}
+h1,h2,h3,h4{font-family:var(--f-head);margin:0;letter-spacing:-.01em;line-height:1.15}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+[hidden]{display:none!important}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--card);border-bottom:1px solid var(--rule)}
+.bar{display:flex;align-items:center;gap:16px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;font:800 24px var(--f-head);letter-spacing:-.03em;color:var(--ink)}
+.search{position:relative;flex:1 1 320px;display:flex;gap:8px;min-width:0}
+.search input{flex:1;min-width:0;padding:10px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.sugg{position:absolute;top:100%;left:0;right:0;margin:4px 0 0;padding:6px;list-style:none;background:var(--card);border:1px solid var(--rule);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.18);z-index:40}
+.sugg button{display:block;width:100%;text-align:left;background:none;border:0;padding:8px 10px;border-radius:6px}
+.sugg button:hover,.sugg button:focus-visible{background:var(--paper)}
+.acts{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.hbtn{background:none;border:0;padding:8px 10px;border-radius:8px;display:flex;gap:6px;align-items:center;font-weight:500}
+.hbtn:hover{background:var(--paper)}
+.cnt{background:var(--saffron);color:#12202E;border-radius:999px;font-size:12px;font-weight:700;min-width:20px;height:20px;display:inline-grid;place-items:center;padding:0 5px}
+.cnt:empty,.cnt[data-n="0"]{display:none}
+.cats{border-top:1px solid var(--rule);overflow-x:auto;white-space:nowrap}
+.cats .wrap{display:flex;gap:2px;padding-top:2px;padding-bottom:2px}
+.cats button{background:none;border:0;padding:9px 12px;border-bottom:3px solid transparent;font-weight:500;color:var(--ink2)}
+.cats button[aria-current="true"]{color:var(--ink);border-bottom-color:var(--teal)}
+.cats button:hover{color:var(--ink)}
+.cats .sp{flex:1}
+
+/* buttons */
+.btn{background:var(--teal);color:var(--on-teal);border:0;border-radius:8px;padding:10px 18px;font-weight:600;line-height:1.2}
+.btn:hover{background:var(--teal-d);color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.sec{background:transparent;color:var(--ink);border:1px solid var(--ink2)}
+.btn.sec:hover{background:var(--paper);color:var(--ink)}
+.btn.warn{background:var(--saffron);color:#12202E}
+.btn.sm{padding:7px 12px;font-size:14px}
+.btn.danger{background:transparent;color:var(--coral);border:1px solid var(--coral)}
+.link{background:none;border:0;padding:0;color:var(--teal-d);text-decoration:underline;font-weight:500}
+.ico{width:36px;height:36px;border-radius:8px;background:transparent;border:1px solid var(--rule);display:grid;place-items:center;font-size:16px;color:var(--ink2)}
+.ico[aria-pressed="true"]{color:var(--coral);border-color:var(--coral)}
+.ico.cmp[aria-pressed="true"]{color:var(--teal-d);border-color:var(--teal)}
+.ico:hover{border-color:var(--ink2)}
+
+/* hero */
+.hero{background:var(--hero);color:var(--hero-fg);padding:44px 0 40px}
+.hero-g{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(36px,5.2vw,64px);font-weight:800;letter-spacing:-.035em}
+.lead{font-size:18px;max-width:46ch;color:#C5D2DB;margin:18px 0}
+.hero-pts{display:flex;flex-wrap:wrap;gap:8px 18px;color:#C5D2DB;font-size:15px}
+.assist{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:20px}
+.assist label{font:700 18px var(--f-head);display:block;margin-bottom:10px}
+.arow{display:flex;gap:8px}
+.arow input{flex:1;min-width:0;padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff}
+.arow input::placeholder{color:#A9BAC6}
+.arow .btn{background:var(--saffron);color:#12202E}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{background:transparent;border:1px solid rgba(255,255,255,.3);color:#E5EDF2;border-radius:999px;padding:5px 12px;font-size:14px}
+.chip:hover{background:rgba(255,255,255,.12)}
+#aout{margin-top:14px;display:grid;gap:10px}
+.arow-res{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:var(--card);color:var(--ink);border-radius:10px;padding:10px}
+.arow-res .tile{width:56px;height:56px;border-radius:8px;font-size:28px}
+.arow-res small{color:var(--ink2);display:block}
+.anote{font-size:13px;color:#A9BAC6}
+
+/* sections */
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:36px 0 14px}
+.sec-h h2{font-size:26px}
+.cat-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.cat-tile{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px;text-align:left;font-weight:600}
+.cat-tile:hover{border-color:var(--teal)}
+.cat-tile span{font-size:26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.tile{position:relative;display:grid;place-items:center;border:0;width:100%;background:hsl(var(--h) var(--ts) var(--tl));aspect-ratio:4/3;font-size:64px;padding:0}
+.tile .off,.tile .eco{position:absolute;top:8px;font:600 12px var(--f-body);padding:3px 8px;border-radius:999px}
+.tile .off{left:8px;background:var(--saffron);color:#12202E}
+.tile .eco{right:8px;background:#1C8A57;color:#fff}
+.pb{padding:12px 14px 14px;display:grid;gap:4px}
+.brand{font-size:13px;color:var(--ink2)}
+.pb h3{font-size:16px;font-weight:600;letter-spacing:0}
+.pb h3 a{text-decoration:none}
+.pb h3 a:hover{text-decoration:underline}
+.rate{font-size:14px;color:var(--ink2)}
+.stars{color:#B7740A;font-weight:600}
+:root[data-theme="dark"] .stars{color:var(--saffron)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stars{color:var(--saffron)}}
+.price{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.price b{font:700 20px var(--f-head)}
+.price s{color:var(--ink2);font-size:14px}
+.prow{display:flex;gap:6px;margin-top:6px;align-items:center}
+.prow .btn{flex:1}
+.stock{font-size:13px;color:var(--coral);font-weight:500}
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin:44px 0 20px;border-top:1px solid var(--rule)}
+.trust div{padding:20px 20px 4px 0}
+.trust h3{font-size:17px;margin-bottom:6px}
+.trust p{margin:0;color:var(--ink2);font-size:15px}
+
+/* catalog */
+.cat-layout{display:grid;grid-template-columns:240px 1fr;gap:28px;padding-top:24px;align-items:start}
+.filters{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px;position:sticky;top:150px}
+.filters summary{font:700 17px var(--f-head);cursor:pointer;margin-bottom:8px}
+.fg{border-top:1px solid var(--rule);padding:12px 0 4px}
+.fg h4{font-size:14px;margin-bottom:8px}
+.fg label{display:flex;gap:8px;align-items:center;padding:3px 0;font-size:15px}
+.fg input[type=range]{width:100%;accent-color:var(--teal)}
+.fg input[type=radio],.fg input[type=checkbox]{accent-color:var(--teal);width:16px;height:16px}
+.fg select,.field input,.field select,.field textarea{width:100%;padding:9px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.res-h{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.res-h select{padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+.empty{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:36px;text-align:center;color:var(--ink2)}
+.empty h3{color:var(--ink);margin-bottom:6px}
+
+/* product page */
+.pp{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding-top:24px}
+.pp .tile{aspect-ratio:1/1;font-size:150px;border-radius:14px}
+.pp h1{font-size:clamp(26px,3.4vw,38px);margin:4px 0 8px}
+.badge{display:inline-flex;gap:6px;align-items:center;font-size:13px;font-weight:600;padding:3px 10px;border-radius:999px;background:rgba(28,138,87,.14);color:var(--ok)}
+.pbox{border:1px solid var(--rule);background:var(--card);border-radius:10px;padding:16px;margin:16px 0}
+.pbox .big{font:800 34px var(--f-head)}
+table{border-collapse:collapse;width:100%}
+td,th{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--ink2);width:42%}
+.brk td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.brk tr.tot td{font-weight:700;border-bottom:0;font-size:17px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.field{display:grid;gap:4px;margin-bottom:12px}
+.field label{font-weight:600;font-size:14px}
+.field .err{color:var(--coral);font-size:13px;min-height:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.review{border-bottom:1px solid var(--rule);padding:12px 0}
+.review p{margin:4px 0 0}
+.wide{overflow-x:auto}
+.cmpt th,.cmpt td{min-width:160px;width:auto}
+.cmpt th:first-child{min-width:120px}
+.best{color:var(--ok);font-weight:700}
+
+/* drawer / modal */
+.scrim{position:fixed;inset:0;background:rgba(8,16,24,.55);z-index:60;display:flex;justify-content:center;align-items:center;padding:16px}
+.scrim.right{justify-content:flex-end;align-items:stretch;padding:0}
+.dlg{background:var(--card);border-radius:14px;padding:22px;width:min(460px,100%);max-height:calc(100% - 8px);overflow:auto;border:1px solid var(--rule)}
+.drawer{width:min(430px,100%);border-radius:0;height:100%;max-height:none;display:flex;flex-direction:column;padding:0}
+.drawer header{padding:16px 20px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center}
+.drawer .body{padding:12px 20px;overflow:auto;flex:1}
+.drawer footer{padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--rule)}
+.line{display:grid;grid-template-columns:56px 1fr auto;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:center}
+.line .tile{width:56px;height:56px;border-radius:8px;font-size:28px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--rule);border-radius:8px;margin-top:4px}
+.qty button{background:none;border:0;width:30px;height:30px}
+.qty span{min-width:26px;text-align:center}
+.xbtn{background:none;border:0;font-size:22px;line-height:1;padding:4px 8px;border-radius:6px}
+.meter{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;margin-top:6px}
+.meter i{display:block;height:100%;width:0;background:var(--coral);transition:width .2s}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--rule);margin-bottom:16px;overflow-x:auto}
+.tabs button{background:none;border:0;padding:9px 14px;border-bottom:3px solid transparent;font-weight:600;color:var(--ink2);white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--teal)}
+.hint{background:rgba(242,163,58,.18);border-radius:8px;padding:8px 12px;font-size:14px}
+
+/* checkout / orders / dashboards */
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;padding-top:24px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;margin-bottom:16px}
+.panel h2{font-size:20px;margin-bottom:12px}
+.pay{display:grid;gap:8px}
+.pay label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--rule);border-radius:8px;padding:10px 12px}
+.pay input{margin-top:4px;accent-color:var(--teal)}
+.pay label:has(input:checked){border-color:var(--teal);background:rgba(11,127,134,.07)}
+.tl{display:flex;gap:0;margin:14px 0 8px;list-style:none;padding:0}
+.tl li{flex:1;text-align:center;font-size:13px;color:var(--ink2);position:relative;padding-top:22px}
+.tl li::before{content:"";position:absolute;top:6px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--rule);z-index:1}
+.tl li::after{content:"";position:absolute;top:11px;left:-50%;width:100%;height:2px;background:var(--rule)}
+.tl li:first-child::after{display:none}
+.tl li.done{color:var(--ink)}
+.tl li.done::before,.tl li.done::after{background:var(--ok)}
+.tl li.now{font-weight:600}
+.status{display:inline-block;font-size:13px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--paper);border:1px solid var(--rule)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:20px 0;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+.kpis div{padding:16px;border-right:1px solid var(--rule)}
+.kpis div:last-child{border-right:0}
+.kpis b{display:block;font:800 26px var(--f-head)}
+.kpis span{color:var(--ink2);font-size:14px}
+.bars{display:flex;gap:10px;align-items:flex-end;height:140px;padding:10px 0}
+.bars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%;font-size:12px;color:var(--ink2)}
+.bars i{display:block;width:100%;background:var(--teal);border-radius:4px 4px 0 0;min-height:4px}
+.item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.item:last-child{border-bottom:0}
+.item small{color:var(--ink2);display:block}
+.num{width:84px;padding:6px 8px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.sev{font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px}
+.sev.hi{background:rgba(201,62,34,.15);color:var(--coral)}
+.sev.md{background:rgba(242,163,58,.25)}
+.back{background:none;border:0;padding:16px 0 0;color:var(--ink2);font-weight:500}
+
+/* chrome */
+.tray{position:fixed;left:0;right:0;bottom:calc(46px + env(safe-area-inset-bottom,0px));z-index:35;background:var(--card);border-top:1px solid var(--rule);box-shadow:0 -6px 20px rgba(0,0,0,.12)}
+.tray .wrap{display:flex;gap:10px;align-items:center;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+.tray .pill{border:1px solid var(--rule);border-radius:999px;padding:4px 6px 4px 12px;display:flex;gap:6px;align-items:center;font-size:14px}
+.demo{position:fixed;left:0;right:0;bottom:0;z-index:36;background:var(--ink);color:var(--paper);padding-bottom:env(safe-area-inset-bottom,0px);font-size:14px}
+:root[data-theme="dark"] .demo{background:#1B2A37;color:#E8EEF2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .demo{background:#1B2A37;color:#E8EEF2}}
+.demo .wrap{display:flex;gap:8px;align-items:center;min-height:46px;overflow-x:auto;white-space:nowrap}
+.demo button{background:transparent;border:1px solid currentColor;color:inherit;border-radius:999px;padding:3px 12px;opacity:.75}
+.demo button[aria-pressed="true"]{background:var(--saffron);border-color:var(--saffron);color:#12202E;opacity:1;font-weight:600}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(70px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:8px;z-index:90;max-width:calc(100% - 32px);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+:root[data-theme="dark"] .toast{background:#E8EEF2;color:#12202E}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .toast{background:#E8EEF2;color:#12202E}}
+main{padding-bottom:150px;outline:none}
+footer.site{border-top:1px solid var(--rule);margin-top:40px;padding:24px 0;color:var(--ink2);font-size:14px}
+@media (max-width:860px){
+  .hero-g,.pp,.two,.cat-layout{grid-template-columns:1fr}
+  .filters{position:static}
+  .hlbl{display:none}
+  .pp .tile{font-size:110px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="sr" href="#app">Skip to content</a>
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#" data-act="go" data-v="home" aria-label="Nexora home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 6.5v9.2c0 7-4.8 12.2-12 14.3C8.8 27.900 4 22.700 4 15.700V6.500z" fill="#0B7F86"/><path d="M11 22V10l10 12V10" fill="none" stroke="#F2A33A" stroke-width="2.800" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      nexora
+    </a>
+    <form class="search" id="sform" role="search">
+      <label class="sr" for="sq">Search products</label>
+      <input id="sq" type="search" placeholder="Search products, brands, or try “phone under 20000”" autocomplete="off">
+      <button class="btn" type="submit">Search</button>
+      <ul class="sugg" id="sugg" hidden></ul>
+    </form>
+    <nav class="acts" aria-label="Account and cart">
+      <button class="hbtn" data-act="theme" aria-label="Switch light or dark theme">◐</button>
+      <button class="hbtn" data-act="go" data-v="wishlist">♥ <span class="hlbl">Wishlist</span> <span class="cnt" id="cW"></span></button>
+      <button class="hbtn" data-act="go" data-v="orders">▤ <span class="hlbl">Orders</span></button>
+      <button class="hbtn" data-act="cart">🛒 <span class="hlbl">Cart</span> <span class="cnt" id="cC"></span></button>
+      <button class="hbtn" data-act="account" id="acct">Sign in</button>
+    </nav>
+  </div>
+  <div class="cats"><div class="wrap" id="catnav"></div></div>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<div id="tray"></div>
+<div id="modal"></div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<div class="demo">
+  <div class="wrap">
+    <strong>Prototype</strong>
+    <span>View as:</span>
+    <button data-act="role" data-v="customer" aria-pressed="true">Customer</button>
+    <button data-act="role" data-v="seller" aria-pressed="false">Seller</button>
+    <button data-act="role" data-v="admin" aria-pressed="false">Administrator</button>
+    <button data-act="reset" style="margin-left:auto">Reset demo data</button>
+  </div>
+</div>
+
+<script>
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const inr=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+const store={
+  get(k,d){try{const v=localStorage.getItem('nx_'+k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem('nx_'+k,JSON.stringify(v))}catch(e){}},
+  clear(){try{Object.keys(localStorage).filter(k=>k.startsWith('nx_')).forEach(k=>localStorage.removeItem(k))}catch(e){}}
+};
+const fdate=t=>new Date(t).toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+
+/* ---------- data ---------- */
+const CATS=[{id:'electronics',name:'Electronics',ic:'📱'},{id:'fashion',name:'Fashion',ic:'👕'},{id:'beauty',name:'Beauty',ic:'🧴'},{id:'home',name:'Home & kitchen',ic:'🏠'},{id:'sports',name:'Sports & fitness',ic:'🏋️'},{id:'lifestyle',name:'Lifestyle',ic:'🎒'}];
+const SELLERS={S1:{name:'Hyderabad Digital Hub',type:'Verified seller'},S2:{name:'Urban Weave & Co.',type:'Verified seller'},S3:{name:'Glow Lab Official',type:'Brand-authorized seller'},S4:{name:'HomeNest Traders',type:'Verified seller'},S5:{name:'Wayfar Outfitters',type:'Verified seller'}};
+const GST={electronics:18,fashion:12,beauty:18,home:18,sports:12,lifestyle:18};
+let _id=0;
+function mk(name,brand,cat,mrp,disc,rating,count,seller,emoji,hue,stock,days,warranty,eco,tags,specs){
+  return {id:'p'+(++_id),name,brand,cat,mrp,disc,price:Math.round(mrp*(1-disc/100)),rating,count,seller,emoji,hue,stock,days,warranty,eco,tags:tags,specs,gst:GST[cat],status:'live'};
+}
+function seedProducts(){
+  _id=0;
+  return [
+  mk('Nova X5 5G','Zenix','electronics',22999,14,4.4,2310,'S1','📱',200,14,3,'1 year','', 'phone mobile smartphone camera 5g gift',{'Display':'6.6" AMOLED, 120 Hz','Camera':'64 MP main + 8 MP wide','Battery':'5000 mAh, 33 W charging','Memory':'8 GB RAM, 128 GB storage'}),
+  mk('Pulse Lite 5G','Zenix','electronics',14999,20,4.2,5120,'S1','📱',215,40,3,'1 year','', 'phone mobile smartphone camera 5g budget',{'Display':'6.5" LCD, 90 Hz','Camera':'50 MP main','Battery':'5000 mAh, 18 W charging','Memory':'6 GB RAM, 128 GB storage'}),
+  mk('Orbit Pro 12','Vertex','electronics',79999,8,4.6,980,'S1','📱',260,6,4,'1 year','', 'phone mobile smartphone camera premium flagship gift',{'Display':'6.8" LTPO OLED, 120 Hz','Camera':'108 MP main + 12 MP ultrawide + 10 MP zoom','Battery':'5200 mAh, 65 W charging','Memory':'12 GB RAM, 256 GB storage'}),
+  mk('AirTune ANC Earbuds','Auralis','electronics',4999,40,4.3,8740,'S1','🎧',185,60,2,'1 year','', 'earbuds headphones audio anc music gift',{'Battery':'30 hours with case','Noise cancellation':'Active, up to 35 dB','Water resistance':'IPX4','Connectivity':'Bluetooth 5.3'}),
+  mk('Bassline Neckband','Auralis','electronics',1499,33,4.0,12400,'S1','🎧',190,120,2,'6 months','', 'earbuds earphones headphones audio music budget',{'Battery':'24 hours','Noise cancellation':'None','Water resistance':'IPX5','Connectivity':'Bluetooth 5.2'}),
+  mk('Slate Air 14 Laptop','Vertex','electronics',58990,12,4.5,1620,'S1','💻',225,9,4,'1 year','', 'laptop notebook computer work office slim',{'Display':'14" FHD IPS','Processor':'8-core, 3.8 GHz boost','Memory':'16 GB RAM, 512 GB SSD','Weight':'1.3 kg'}),
+  mk('StudyBook 15','Lumio','electronics',34990,15,4.1,3200,'S1','💻',230,18,4,'1 year','', 'laptop notebook computer study student college',{'Display':'15.6" FHD','Processor':'6-core, 4.2 GHz boost','Memory':'8 GB RAM, 512 GB SSD','Weight':'1.7 kg'}),
+  mk('Frame 43" 4K TV','Lumio','electronics',27999,25,4.3,6800,'S1','📺',170,11,5,'1 year','', 'tv television 4k smart home entertainment',{'Screen':'43" 4K UHD','Refresh rate':'60 Hz','Smart features':'Built-in apps, voice remote','Ports':'3 HDMI, 2 USB'}),
+  mk('Snapcam 4K Action Camera','Lumio','electronics',6499,30,4.0,1450,'S1','📷',175,25,3,'1 year','', 'camera action travel adventure 4k video',{'Video':'4K at 30 fps','Water resistance':'Waterproof to 10 m','Battery':'1350 mAh','Stabilisation':'Electronic'}),
+  mk('Charge+ 20000 mAh Power Bank','Zenix','electronics',1799,28,4.4,9100,'S1','🔋',205,80,2,'6 months','', 'powerbank battery charger travel accessory',{'Capacity':'20,000 mAh','Output':'22.5 W fast charging','Ports':'2 USB-A, 1 USB-C','Weight':'420 g'}),
+
+  mk('Everyday Cotton Tee, pack of 3','Urban Weave','fashion',1199,45,4.2,7300,'S2','👕',30,150,4,'',true,'tee tshirt clothing men women cotton eco basics gift',{'Fabric':'100% organic cotton','Fit':'Regular','Care':'Machine wash cold','Returns':'7 days, size exchange'}),
+  mk('Slim Fit Chinos','Urban Weave','fashion',1999,40,4.1,4200,'S2','👖',35,90,4,'',false,'pants trousers chinos clothing men formal casual',{'Fabric':'Cotton blend with stretch','Fit':'Slim','Care':'Machine wash','Returns':'7 days, size exchange'}),
+  mk('Linen Kurta Set','Loom & Thread','fashion',2799,35,4.5,2100,'S2','🥻',340,40,5,'',true,'kurta ethnic clothing women festive linen eco gift',{'Fabric':'Pure linen','Fit':'Relaxed','Care':'Hand wash','Includes':'Kurta and pants'}),
+  mk('CloudStride Running Shoes','Stridex','fashion',3999,30,4.4,5600,'S2','👟',10,70,4,'3 months','', 'shoes running footwear sports fitness gym',{'Upper':'Breathable mesh','Sole':'Cushioned EVA','Weight':'260 g (UK 9)','Best for':'Road running'}),
+  mk('Court Classic Sneakers','Stridex','fashion',2999,25,4.2,3900,'S2','👟',20,55,4,'3 months','', 'sneakers shoes footwear casual',{'Upper':'Leather-look synthetic','Sole':'Rubber cupsole','Fit':'True to size','Care':'Wipe clean'}),
+  mk('Canvas Weekender Bag','Wayfar','fashion',2499,32,4.3,1800,'S5','🧳',45,35,4,'6 months',true,'bag travel weekend luggage eco recycled gift',{'Material':'Recycled canvas','Capacity':'35 litres','Features':'Shoe pocket, trolley sleeve','Weight':'900 g'}),
+  mk('Meridian Analog Watch','Chronic','fashion',5999,38,4.2,2700,'S2','⌚',50,22,4,'2 years','', 'watch accessory wrist gift formal',{'Movement':'Quartz','Case':'40 mm stainless steel','Water resistance':'3 ATM','Strap':'Genuine leather'}),
+
+  mk('Dew Daily Moisturiser SPF 30','Glow Lab','beauty',699,15,4.5,6400,'S3','🧴',160,200,3,'','', 'skincare moisturiser moisturizer cream spf sunscreen face',{'Skin type':'All skin types','Size':'50 ml','Key ingredients':'Niacinamide, ceramides','Shelf life':'24 months'}),
+  mk('Vitamin C Serum, 20 ml','Glow Lab','beauty',899,20,4.3,4800,'S3','🧪',40,140,3,'','', 'skincare serum face vitamin glow gift',{'Skin type':'Normal to dry','Size':'20 ml','Key ingredients':'10% vitamin C, hyaluronic acid','Shelf life':'18 months'}),
+  mk('Argan Repair Shampoo, refill pouch','Glow Lab','beauty',549,10,4.1,3300,'S3','🧴',25,95,3,'',true,'haircare shampoo hair argan eco refill',{'Hair type':'Dry and frizzy','Size':'500 ml refill pouch','Free from':'Sulphates, parabens','Shelf life':'24 months'}),
+
+  mk('Aero Fry 4 L Air Fryer','HomeNest','home',6499,40,4.4,8900,'S4','🍟',20,32,4,'1 year','', 'kitchen airfryer appliance cooking home',{'Capacity':'4 litres','Power':'1500 W','Controls':'Digital, 8 presets','Cleaning':'Dishwasher-safe basket'}),
+  mk('Swift 1.5 L Electric Kettle','HomeNest','home',1299,30,4.2,10200,'S4','🫖',15,160,3,'1 year','', 'kitchen kettle appliance tea coffee home',{'Capacity':'1.5 litres','Power':'1800 W','Body':'Stainless steel','Safety':'Auto shut-off, boil-dry protection'}),
+  mk('Oak & Cane Study Desk','HomeNest','home',8999,22,4.0,950,'S4','🪑',30,8,7,'1 year','', 'furniture desk study table work home office',{'Size':'120 × 60 cm','Material':'Engineered wood, metal frame','Assembly':'DIY, tools included','Load capacity':'60 kg'}),
+  mk('Bamboo Kitchen Starter Set','HomeNest','home',999,25,4.3,1700,'S4','🥄',95,75,4,'',true,'kitchen utensils bamboo eco home gift',{'Includes':'Spatula, ladle, tongs, board','Material':'Sustainably harvested bamboo','Care':'Hand wash','Packaging':'Plastic-free'}),
+
+  mk('FlexFit Yoga Mat, 6 mm','Stridex','sports',999,35,4.3,4100,'S5','🧘',150,110,4,'',true,'yoga mat fitness gym exercise eco gift',{'Thickness':'6 mm','Material':'Natural rubber blend','Size':'183 × 61 cm','Grip':'Non-slip both sides'}),
+  mk('Adjustable Dumbbell Set, 10 kg','IronHaus','sports',2499,20,4.2,2300,'S5','🏋️',210,28,4,'6 months','', 'dumbbell weights fitness gym exercise strength',{'Total weight':'10 kg (2 × 5 kg)','Adjustment':'Screw collars','Grip':'Textured steel','Includes':'Carry case'}),
+
+  mk('Hydra Steel Bottle, 750 ml','Wayfar','lifestyle',899,28,4.6,11300,'S5','🥤',185,210,3,'',true,'bottle steel water travel eco gym gift',{'Capacity':'750 ml','Insulation':'Cold 24 h, hot 12 h','Material':'Food-grade stainless steel','Lid':'Leak-proof'}),
+  mk('Packwise Travel Organiser Set','Wayfar','lifestyle',799,30,4.1,2900,'S5','🧳',45,85,4,'',false,'travel packing organiser cubes luggage',{'Pieces':'6 packing cubes','Material':'Ripstop nylon','Sizes':'S, M, L, laundry bag, shoe bag, pouch','Weight':'380 g'})
+  ];
+}
+let P=seedProducts();
+const live=()=>P.filter(p=>p.status==='live');
+const byId=id=>P.find(p=>p.id===id);
+
+const NAMES=['Ananya R.','Karthik S.','Meera P.','Rohit K.','Sana M.','Vikram T.','Divya N.','Arjun B.'];
+const TXT={5:['Exactly as described and arrived a day early.','Great quality for the price. Packaging was solid.','Very happy with it. Would buy again.'],4:['Good value. Small delay in delivery but the product is fine.','Works well and does what it says.','Solid buy, only minor nitpicks.'],3:['Okay for the price, expected slightly better.','Average. Does the job.']};
+function seedReviews(p){
+  const n=parseInt(p.id.slice(1),10),out=[];
+  for(let i=0;i<3;i++){
+    const star=Math.max(3,Math.min(5,Math.round(p.rating+(((n+i)%3)-1)*0.6)));
+    const t=TXT[star];
+    out.push({name:NAMES[(n+i*3)%NAMES.length],stars:star,text:t[(n+i)%t.length],verified:true});
+  }
+  return out;
+}
+
+/* admin / support data (resets on reload) */
+function seedAdmin(){
+  return {
+    applicants:[
+      {id:'A1',name:'Bluebell Handlooms',kind:'Fashion seller',docs:'GSTIN, PAN, bank proof submitted',status:'pending'},
+      {id:'A2',name:'Kiran Mobile Traders',kind:'Electronics seller',docs:'GSTIN, PAN submitted. Brand authorization letter missing',status:'pending'}
+    ],
+    flagged:[
+      {id:'R1',product:'Bassline Neckband',text:'Best product ever!!! Buy from my store link for 50% off',why:'Contains external link, posted by 4 new accounts within 10 minutes',status:'open'},
+      {id:'R2',product:'AirTune ANC Earbuds',text:'Five stars. Five stars. Five stars.',why:'Same text on 6 products from one device',status:'open'}
+    ],
+    fraud:[
+      {id:'F1',sev:'hi',what:'11 failed payment attempts from one device in 6 minutes',action:'Temporarily hold checkout for this device and ask for extra verification',status:'open'},
+      {id:'F2',sev:'md',what:'Refund requests up 4× for one seller this week',action:'Review the seller’s recent orders and listings',status:'open'},
+      {id:'F3',sev:'md',what:'New account placed 6 high-value orders to different addresses',action:'Hold orders for manual review',status:'open'}
+    ],
+    tickets:[
+      {id:'TKT-1042',who:'Customer',what:'Order arrived with a damaged box. Asking for a replacement',status:'open'},
+      {id:'TKT-1043',who:'Customer',what:'Payment deducted but order not created',status:'open'},
+      {id:'TKT-1044',who:'Customer',what:'Wants to confirm a product is genuine before buying',status:'open'}
+    ],
+    audit:[]
+  };
+}
+let A=seedAdmin();
+
+/* ---------- state ---------- */
+const S={
+  view:'home',arg:null,q:'',
+  f:{cat:'all',max:80000,rating:0,brands:[],authorized:false,eco:false,instock:false,sort:'relevance'},
+  cart:store.get('cart',[]),wish:store.get('wish',[]),alerts:store.get('alerts',[]),orders:store.get('orders',[]),
+  user:store.get('user',null),reviews:store.get('reviews',{}),points:store.get('points',0),
+  cmp:[],coupon:null,role:'customer',adminTab:'approvals',placing:false,pending:null,pay:'upi'
+};
+function save(){store.set('cart',S.cart);store.set('wish',S.wish);store.set('alerts',S.alerts);store.set('orders',S.orders);store.set('user',S.user);store.set('reviews',S.reviews);store.set('points',S.points)}
+
+/* ---------- search ---------- */
+const STOP=new Set(['a','an','the','for','with','good','best','me','i','need','want','looking','to','buy','get','show','some','under','below','and','of','in','on','my','friendly','than','less','upto','up','within','is','are','please','cheap','new']);
+const SYN={mobile:'phone',smartphone:'phone',cellphone:'phone',earphones:'earbuds',earphone:'earbuds',headphone:'earbuds',headphones:'earbuds',notebook:'laptop',laptops:'laptop',television:'tv',shoe:'shoes',sneaker:'sneakers',moisturizer:'moisturiser',sunscreen:'spf',workout:'fitness',sustainable:'eco',phones:'phone',earbud:'earbuds',kurtas:'kurta'};
+function parseBudget(q){
+  const m=q.toLowerCase().match(/(?:under|below|within|less than|upto|up to|<)\s*(?:₹|rs\.?|inr)?\s*([\d,]+(?:\.\d+)?)\s*(k|thousand|lakh|lakhs|l)?/);
+  if(!m)return {budget:null,rest:q};
+  let n=parseFloat(m[1].replace(/,/g,''));
+  const u=m[2];
+  if(u==='k'||u==='thousand')n*=1000;else if(u&&u!=='k')n*=100000;
+  return {budget:n,rest:q.replace(m[0],' ')};
+}
+function smartSearch(q){
+  const {budget,rest}=parseBudget(q);
+  const toks=rest.toLowerCase().split(/[^a-z0-9]+/).filter(t=>t&&!STOP.has(t)).map(t=>SYN[t]||t);
+  let list=live();
+  if(budget)list=list.filter(p=>p.price<=budget);
+  if(!toks.length)return {list:list.slice().sort((a,b)=>b.rating-a.rating),budget,toks};
+  const need=Math.ceil(toks.length*0.6);
+  const scored=list.map(p=>{
+    const text=(p.name+' '+p.brand+' '+p.cat+' '+p.tags+(p.eco?' eco':'')).toLowerCase();
+    let s=0;toks.forEach(t=>{const stem=t.length>3?t.replace(/s$/,''):t;if(text.includes(stem))s++});
+    return {p,s};
+  }).filter(x=>x.s>=need).sort((a,b)=>b.s-a.s||b.p.rating-a.p.rating);
+  return {list:scored.map(x=>x.p),budget,toks};
+}
+
+/* ---------- money ---------- */
+function cartItems(){return S.cart.map(c=>({p:byId(c.id),qty:c.qty})).filter(x=>x.p)}
+function totals(items,coupon){
+  let sub=0,mrp=0,gst=0;
+  items.forEach(({p,qty})=>{sub+=p.price*qty;mrp+=p.mrp*qty;gst+=(p.price-p.price/(1+p.gst/100))*qty});
+  const cd=(coupon==='NEXORA10'&&sub>=999)?Math.min(500,Math.round(sub*0.10)):0;
+  const ship=(sub===0||sub-cd>=499)?0:49;
+  const total=sub-cd+ship;
+  return {sub,mrp,save:mrp-sub,gst,cd,ship,total,points:Math.floor(total/100)};
+}
+
+/* ---------- UI bits ---------- */
+function toast(msg){const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>{t.hidden=true},3200)}
+function stars(r){return `<span class="stars" aria-label="Rated ${r} out of 5">★ ${r.toFixed(1)}</span>`}
+function stockNote(p){return p.stock===0?'<span class="stock">Out of stock</span>':p.stock<=8?`<span class="stock">Only ${p.stock} left</span>`:''}
+function card(p){
+  const w=S.wish.includes(p.id),c=S.cmp.includes(p.id);
+  return `<article class="card">
+    <button class="tile" data-act="open" data-id="${p.id}" style="--h:${p.hue}" aria-label="View ${esc(p.name)}"><span aria-hidden="true">${p.emoji}</span>${p.disc?`<span class="off">${p.disc}% off</span>`:''}${p.eco?'<span class="eco">Eco</span>':''}</button>
+    <div class="pb">
+      <div class="brand">${esc(p.brand)}</div>
+      <h3><a href="#" data-act="open" data-id="${p.id}">${esc(p.name)}</a></h3>
+      <div class="rate">${stars(p.rating)} (${p.count.toLocaleString('en-IN')})</div>
+      <div class="price"><b>${inr(p.price)}</b><s>${inr(p.mrp)}</s></div>
+      ${stockNote(p)}
+      <div class="prow">
+        <button class="btn sm" data-act="add" data-id="${p.id}" ${p.stock===0?'disabled':''}>Add to cart</button>
+        <button class="ico" data-act="wish" data-id="${p.id}" aria-pressed="${w}" aria-label="${w?'Remove from':'Save to'} wishlist">♥</button>
+        <button class="ico cmp" data-act="cmp" data-id="${p.id}" aria-pressed="${c}" aria-label="${c?'Remove from':'Add to'} comparison">⇄</button>
+      </div>
+    </div></article>`;
+}
+function openModal(html,cls){
+  $('#modal').innerHTML=`<div class="scrim ${cls||''}" data-act="scrim">${html}</div>`;
+  const f=$('#modal').querySelector('input,select,textarea,button.btn');if(f&&!cls)f.focus();
+}
+function closeModal(){$('#modal').innerHTML=''}
+
+/* ---------- views ---------- */
+function vHome(){
+  const picks=live().slice().sort((a,b)=>b.rating*Math.log(b.count)-a.rating*Math.log(a.count)).slice(0,8);
+  const deals=live().filter(p=>p.disc>=35).slice(0,4);
+  const ex=['phone under 20000 with good camera','running shoes under 4000','eco-friendly gift','laptop for study under 40000'];
+  return `
+  <section class="hero"><div class="wrap hero-g">
+    <div>
+      <h1>Discover more.<br>Shop smarter.<br>Stay protected.</h1>
+      <p class="lead">One marketplace for electronics, fashion, beauty, home and more. Sellers are checked, and the full price is shown before you pay.</p>
+      <div class="hero-pts"><span>✓ Verified sellers</span><span>✓ Final price upfront</span><span>✓ Reviews from real buyers</span></div>
+    </div>
+    <div class="assist">
+      <label for="aq">Tell the shopping assistant what you need</label>
+      <div class="arow"><input id="aq" placeholder="e.g. phone under 20000 with good camera" autocomplete="off"><button class="btn" data-act="assist">Find</button></div>
+      <div class="chips">${ex.map(e=>`<button class="chip" data-act="assist-ex" data-v="${esc(e)}">${esc(e)}</button>`).join('')}</div>
+      <div id="aout" aria-live="polite"></div>
+    </div>
+  </div></section>
+  <div class="wrap">
+    <div class="cat-tiles">${CATS.map(c=>`<button class="cat-tile" data-act="cat" data-v="${c.id}"><span aria-hidden="true">${c.ic}</span>${c.name}</button>`).join('')}</div>
+    <div class="sec-h"><h2>Top rated right now</h2><button class="link" data-act="cat" data-v="all">Browse everything</button></div>
+    <div class="grid">${picks.map(card).join('')}</div>
+    <div class="sec-h"><h2>Biggest discounts</h2></div>
+    <div class="grid">${deals.map(card).join('')}</div>
+    <div class="trust">
+      <div><h3>Sellers are checked</h3><p>Identity and business details are verified. Brand-authorized sellers are labelled on the product page.</p></div>
+      <div><h3>No surprises at checkout</h3><p>Price, GST, delivery and discounts are itemised before you pay.</p></div>
+      <div><h3>Payments are verified</h3><p>Payment results are confirmed on our server, and card numbers are never stored by Nexora.</p></div>
+      <div><h3>Reviews from real buyers</h3><p>Only customers who received a product can review it. Suspicious reviews are removed.</p></div>
+    </div>
+  </div>`;
+}
+
+function vCatalog(){
+  const brands=[...new Set(live().map(p=>p.brand))].sort();
+  return `<div class="wrap cat-layout">
+    <aside class="filters" aria-label="Filters"><details id="fdet" open><summary>Filters</summary>
+      <div class="fg"><h4>Category</h4>
+        <label><input type="radio" name="fcat" value="all" ${S.f.cat==='all'?'checked':''}> All categories</label>
+        ${CATS.map(c=>`<label><input type="radio" name="fcat" value="${c.id}" ${S.f.cat===c.id?'checked':''}> ${c.name}</label>`).join('')}
+      </div>
+      <div class="fg"><h4>Maximum price: <span id="fmaxl"></span></h4><input type="range" id="fmax" min="500" max="80000" step="500" value="${S.f.max}" aria-label="Maximum price"></div>
+      <div class="fg"><h4>Customer rating</h4><select id="frate" aria-label="Minimum rating"><option value="0">Any rating</option><option value="4" ${S.f.rating===4?'selected':''}>4 stars and up</option><option value="4.4" ${S.f.rating===4.4?'selected':''}>4.4 stars and up</option></select></div>
+      <div class="fg"><h4>Brand</h4>${brands.map(b=>`<label><input type="checkbox" class="fbr" value="${esc(b)}" ${S.f.brands.includes(b)?'checked':''}> ${esc(b)}</label>`).join('')}</div>
+      <div class="fg"><h4>More</h4>
+        <label><input type="checkbox" id="fauth" ${S.f.authorized?'checked':''}> Brand-authorized sellers</label>
+        <label><input type="checkbox" id="feco" ${S.f.eco?'checked':''}> Eco-friendly</label>
+        <label><input type="checkbox" id="fstock" ${S.f.instock?'checked':''}> In stock only</label>
+      </div>
+      <button class="btn sec sm" data-act="clearf">Clear filters</button>
+    </details></aside>
+    <section aria-live="polite">
+      <div class="res-h"><div id="rcount"></div>
+        <label>Sort by <select id="fsort"><option value="relevance">Relevance</option><option value="plh" ${S.f.sort==='plh'?'selected':''}>Price: low to high</option><option value="phl" ${S.f.sort==='phl'?'selected':''}>Price: high to low</option><option value="rate" ${S.f.sort==='rate'?'selected':''}>Customer rating</option><option value="disc" ${S.f.sort==='disc'?'selected':''}>Biggest discount</option></select></label>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section></div>`;
+}
+function updateGrid(){
+  const g=$('#grid');if(!g)return;
+  const F=S.f;let base,budgetNote='';
+  if(S.q){const r=smartSearch(S.q);base=r.list;if(r.budget)budgetNote=` under ${inr(r.budget)}`}else base=live();
+  let list=base.filter(p=>(F.cat==='all'||p.cat===F.cat)&&p.price<=(F.max>=80000?Infinity:F.max)&&p.rating>=F.rating&&(!F.brands.length||F.brands.includes(p.brand))&&(!F.authorized||SELLERS[p.seller].type.startsWith('Brand'))&&(!F.eco||p.eco)&&(!F.instock||p.stock>0));
+  if(F.sort==='plh')list.sort((a,b)=>a.price-b.price);
+  else if(F.sort==='phl')list.sort((a,b)=>b.price-a.price);
+  else if(F.sort==='rate')list.sort((a,b)=>b.rating-a.rating);
+  else if(F.sort==='disc')list.sort((a,b)=>b.disc-a.disc);
+  $('#fmaxl').textContent=F.max>=80000?'Any price':inr(F.max);
+  const cname=F.cat==='all'?'':(' in '+CATS.find(c=>c.id===F.cat).name);
+  $('#rcount').innerHTML=S.q?`<strong>${list.length}</strong> result${list.length===1?'':'s'} for “${esc(S.q.trim())}”${esc(cname)}${budgetNote?' ('+esc(budgetNote.trim())+')':''} <button class="link" data-act="clearq">Clear search</button>`:`<strong>${list.length}</strong> product${list.length===1?'':'s'}${esc(cname)}`;
+  g.innerHTML=list.length?list.map(card).join(''):`<div class="empty" style="grid-column:1/-1"><h3>No products match</h3><p>Try a higher price limit, fewer filters, or a different search word.</p><button class="btn sec sm" data-act="clearf">Clear filters</button></div>`;
+}
+function readFilters(){
+  const F=S.f;
+  const r=document.querySelector('input[name=fcat]:checked');F.cat=r?r.value:'all';
+  F.max=+$('#fmax').value;F.rating=+$('#frate').value;
+  F.brands=[...document.querySelectorAll('.fbr:checked')].map(x=>x.value);
+  F.authorized=$('#fauth').checked;F.eco=$('#feco').checked;F.instock=$('#fstock').checked;F.sort=$('#fsort').value;
+  updateGrid();updateChrome();
+}
+
+function breakdownRows(sub,ship,gst,disc,gstPct){
+  return `<table class="brk"><tbody>
+    <tr><td>Item price (inclusive of GST)</td><td>${inr(sub)}</td></tr>
+    ${disc?`<tr><td>Coupon discount</td><td>−${inr(disc)}</td></tr>`:''}
+    <tr><td>Delivery</td><td>${ship?inr(ship):'Free'}</td></tr>
+    <tr class="tot"><td>You pay</td><td>${inr(sub-disc+ship)}</td></tr>
+    <tr><td colspan="2" style="font-size:13px;color:var(--ink2);border:0;padding-top:0">Includes ${inr(gst)} GST${gstPct?` at ${gstPct}%`:''}. GST rates shown are illustrative.</td></tr>
+  </tbody></table>`;
+}
+function eligibleToReview(pid){
+  return S.user&&S.orders.some(o=>o.stage===4&&!o.after&&o.items.some(i=>i.id===pid));
+}
+function vProduct(){
+  const p=byId(S.arg);if(!p)return `<div class="wrap"><div class="empty" style="margin-top:24px"><h3>Product not found</h3><button class="btn" data-act="go" data-v="catalog">Back to products</button></div></div>`;
+  const sel=SELLERS[p.seller],w=S.wish.includes(p.id),c=S.cmp.includes(p.id),al=S.alerts.includes(p.id);
+  const rev=(S.reviews[p.id]||[]).concat(seedReviews(p));
+  const ship=p.price>=499?0:49;
+  const gst=p.price-p.price/(1+p.gst/100);
+  return `<div class="wrap"><button class="back" data-act="back">← Back to products</button>
+  <div class="pp">
+    <div class="tile" style="--h:${p.hue}" role="img" aria-label="${esc(p.name)} product image placeholder"><span aria-hidden="true">${p.emoji}</span></div>
+    <div>
+      <div class="brand">${esc(p.brand)}</div>
+      <h1>${esc(p.name)}</h1>
+      <div class="rate">${stars(p.rating)} · ${p.count.toLocaleString('en-IN')} ratings ${p.eco?' · <span class="badge">Eco-friendly</span>':''}</div>
+      <p style="margin:10px 0 0"><span class="badge">✓ ${esc(sel.type)}</span> Sold by ${esc(sel.name)}</p>
+      <div class="pbox">
+        <div class="price"><span class="big">${inr(p.price)}</span><s>${inr(p.mrp)}</s><b style="font-size:16px;color:var(--ok)">${p.disc}% off</b></div>
+        <p style="margin:12px 0 4px;font-weight:600">What you'll pay</p>
+        ${breakdownRows(p.price,ship,gst,0,p.gst)}
+        <p style="margin:8px 0 0">${stockNote(p)||'<span style="color:var(--ok);font-weight:500">In stock</span>'}</p>
+      </div>
+      <div class="btns">
+        <button class="btn" data-act="add" data-id="${p.id}" ${p.stock===0?'disabled':''}>Add to cart</button>
+        <button class="btn warn" data-act="buynow" data-id="${p.id}" ${p.stock===0?'disabled':''}>Buy now</button>
+        <button class="btn sec" data-act="wish" data-id="${p.id}" aria-pressed="${w}">${w?'♥ Saved':'♡ Save'}</button>
+        <button class="btn sec" data-act="cmp" data-id="${p.id}" aria-pressed="${c}">${c?'Remove from compare':'⇄ Compare'}</button>
+      </div>
+      <label style="display:flex;gap:8px;align-items:center;margin-bottom:12px"><input type="checkbox" data-act="alert" data-id="${p.id}" ${al?'checked':''} style="accent-color:var(--teal);width:18px;height:18px"> Tell me if the price drops or it’s back in stock</label>
+      <div class="field"><label for="pin">Check delivery to your pincode</label>
+        <div style="display:flex;gap:8px"><input id="pin" inputmode="numeric" maxlength="6" placeholder="e.g. 500081" style="flex:1"><button class="btn sec" data-act="pin" data-id="${p.id}">Check</button></div>
+        <div id="pinout" aria-live="polite" style="font-size:14px"></div></div>
+      <p style="color:var(--ink2);font-size:14px;margin:0">${p.warranty?'Warranty: '+esc(p.warranty)+'. ':''}Easy returns within 7 days of delivery. <button class="link" data-act="report" data-id="${p.id}">Report a problem with this listing</button></p>
+    </div>
+  </div>
+  <div class="sec-h"><h2>Specifications</h2></div>
+  <div class="panel wide"><table><tbody>${Object.entries(p.specs).map(([k,v])=>`<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}</tbody></table></div>
+  <div class="sec-h"><h2>Reviews</h2></div>
+  <div class="panel">
+    ${rev.map(r=>`<div class="review"><strong>${esc(r.name)}</strong> <span class="stars" aria-label="${r.stars} out of 5 stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span> ${r.verified?'<span class="badge">Verified purchase</span>':''}<p>${esc(r.text)}</p></div>`).join('')}
+    ${eligibleToReview(p.id)?`<form data-form="review" data-id="${p.id}" style="margin-top:16px"><h3 style="margin-bottom:8px">Write a review</h3>
+      <div class="field"><label for="rs">Rating</label><select id="rs"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+      <div class="field"><label for="rt">Your review</label><textarea id="rt" rows="3" maxlength="400" required></textarea></div>
+      <button class="btn" type="submit">Post review</button></form>`
+    :`<p style="color:var(--ink2);margin:14px 0 0">Only customers who have received this product can post a review.</p>`}
+  </div></div>`;
+}
+
+function vCompare(){
+  const items=S.cmp.map(byId).filter(Boolean);
+  if(items.length<2)return `<div class="wrap"><div class="empty" style="margin-top:24px"><h3>Pick at least two products</h3><p>Use the ⇄ button on any product to add it, then come back here.</p><button class="btn" data-act="go" data-v="catalog">Browse products</button></div></div>`;
+  const keys=[...new Set(items.flatMap(p=>Object.keys(p.specs)))];
+  const minP=Math.min(...items.map(p=>p.price)),maxR=Math.max(...items.map(p=>p.rating));
+  const row=(l,fn)=>`<tr><th scope="row">${l}</th>${items.map(p=>`<td>${fn(p)}</td>`).join('')}</tr>`;
+  return `<div class="wrap"><button class="back" data-act="back">← Back</button>
+  <div class="sec-h" style="margin-top:12px"><h2>Compare products</h2><button class="link" data-act="clearcmp">Clear comparison</button></div>
+  <div class="panel wide"><table class="cmpt"><thead><tr><th></th>${items.map(p=>`<th scope="col" style="font-size:16px"><span style="font-size:36px;display:block" aria-hidden="true">${p.emoji}</span>${esc(p.name)}<br><button class="link" data-act="open" data-id="${p.id}">View</button> · <button class="link" data-act="cmp" data-id="${p.id}">Remove</button></th>`).join('')}</tr></thead><tbody>
+    ${row('Price',p=>`<span class="${p.price===minP?'best':''}">${inr(p.price)}</span> <s style="color:var(--ink2)">${inr(p.mrp)}</s>${p.price===minP?'<br><span class="best" style="font-size:13px">Lowest price</span>':''}`)}
+    ${row('Rating',p=>`<span class="${p.rating===maxR?'best':''}">★ ${p.rating.toFixed(1)}</span> (${p.count.toLocaleString('en-IN')})`)}
+    ${row('Brand',p=>esc(p.brand))}
+    ${row('Seller',p=>esc(SELLERS[p.seller].name)+'<br><span style="font-size:13px;color:var(--ink2)">'+esc(SELLERS[p.seller].type)+'</span>')}
+    ${row('Warranty',p=>esc(p.warranty||'None listed'))}
+    ${row('Delivery estimate',p=>p.days+' days')}
+    ${keys.map(k=>row(esc(k),p=>p.specs[k]?esc(p.specs[k]):'<span style="color:var(--ink2)">Not listed</span>')).join('')}
+    ${row('',p=>`<button class="btn sm" data-act="add" data-id="${p.id}" ${p.stock===0?'disabled':''}>Add to cart</button>`)}
+  </tbody></table></div></div>`;
+}
+
+function vWishlist(){
+  const items=S.wish.map(byId).filter(Boolean);
+  return `<div class="wrap"><div class="sec-h" style="margin-top:24px"><h2>Your wishlist</h2></div>
+  ${items.length?`<div class="grid">${items.map(p=>`<div>${card(p)}<label style="display:flex;gap:8px;align-items:center;margin-top:8px;font-size:14px"><input type="checkbox" data-act="alert" data-id="${p.id}" ${S.alerts.includes(p.id)?'checked':''} style="accent-color:var(--teal)"> Price and restock alerts</label></div>`).join('')}</div>`
+  :`<div class="empty"><h3>Nothing saved yet</h3><p>Tap the ♥ on any product to keep it here and get price-drop alerts.</p><button class="btn" data-act="go" data-v="catalog">Browse products</button></div>`}</div>`;
+}
+
+function vCheckout(){
+  const items=cartItems();
+  if(!items.length)return `<div class="wrap"><div class="empty" style="margin-top:24px"><h3>Your cart is empty</h3><button class="btn" data-act="go" data-v="catalog">Browse products</button></div></div>`;
+  const t=totals(items,S.coupon);
+  return `<div class="wrap"><button class="back" data-act="back">← Back</button>
+  <form class="two" data-form="checkout" novalidate>
+    <div>
+      <div class="panel"><h2>Delivery address</h2>
+        <div class="row2"><div class="field"><label for="cn">Full name</label><input id="cn" autocomplete="name" value="${esc(S.user?S.user.name:'')}"><div class="err" id="e-cn"></div></div>
+        <div class="field"><label for="cp">Mobile number</label><input id="cp" inputmode="numeric" maxlength="10" autocomplete="tel-national"><div class="err" id="e-cp"></div></div></div>
+        <div class="field"><label for="ca">Address</label><input id="ca" autocomplete="street-address"><div class="err" id="e-ca"></div></div>
+        <div class="row2"><div class="field"><label for="cc">City</label><input id="cc" autocomplete="address-level2"><div class="err" id="e-cc"></div></div>
+        <div class="field"><label for="cz">Pincode</label><input id="cz" inputmode="numeric" maxlength="6" autocomplete="postal-code"><div class="err" id="e-cz"></div></div></div>
+      </div>
+      <div class="panel"><h2>Payment</h2>
+        <div class="pay" role="radiogroup">
+          <label><input type="radio" name="pay" value="upi" ${S.pay==='upi'?'checked':''}><span><strong>UPI</strong><br><small>Pay with any UPI app</small></span></label>
+          <label><input type="radio" name="pay" value="card" ${S.pay==='card'?'checked':''}><span><strong>Credit or debit card</strong><br><small>Card details are entered on the payment provider’s secure page. Nexora never sees or stores them.</small></span></label>
+          <label><input type="radio" name="pay" value="cod" ${S.pay==='cod'?'checked':''}><span><strong>Cash on delivery</strong><br><small>Available for orders up to ₹50,000</small></span></label>
+        </div>
+        <div class="field" id="upiF" style="margin-top:12px" ${S.pay==='upi'?'':'hidden'}><label for="upi">UPI ID</label><input id="upi" placeholder="name@bank" autocomplete="off"><div class="err" id="e-upi"></div></div>
+        <div class="hint" style="margin-top:12px">Prototype: no real payment is taken. In the live product, the payment result is confirmed on the server before an order is created.</div>
+      </div>
+    </div>
+    <div class="panel" style="position:sticky;top:150px"><h2>Order summary</h2>
+      ${items.map(({p,qty})=>`<div class="item"><span>${p.emoji} ${esc(p.name)} × ${qty}</span><span>${inr(p.price*qty)}</span></div>`).join('')}
+      <div style="margin-top:12px">${breakdownRows(t.sub,t.ship,t.gst,t.cd,0)}</div>
+      ${t.save>0?`<p style="color:var(--ok);font-weight:600;margin:8px 0">You save ${inr(t.save+t.cd)} on this order</p>`:''}
+      <p style="font-size:14px;color:var(--ink2);margin:0 0 12px">You’ll earn ${t.points} Nexora Points.</p>
+      <button class="btn" type="submit" id="placeBtn" style="width:100%">Place order · ${inr(t.total)}</button>
+    </div>
+  </form></div>`;
+}
+
+const STAGES=['Order placed','Packed','Shipped','Out for delivery','Delivered'];
+function orderStatus(o){
+  if(o.after==='cancelled')return 'Cancelled';
+  if(o.after==='return-requested')return 'Return requested';
+  if(o.after==='return-pickedup')return 'Return picked up';
+  if(o.after==='refunded')return 'Refund issued';
+  return STAGES[o.stage];
+}
+function vOrders(){
+  const tier=S.points>=500?'Gold':'Silver';
+  return `<div class="wrap"><div class="sec-h" style="margin-top:24px"><h2>Your orders</h2><span class="status">${tier} member · ${S.points} Nexora Points</span></div>
+  ${S.orders.length?S.orders.map(o=>`
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><div><strong>Order ${o.id}</strong><br><small style="color:var(--ink2)">Placed ${fdate(o.at)} · ${o.pay.toUpperCase()} · ${inr(o.total)}</small></div><span class="status">${orderStatus(o)}</span></div>
+      ${o.items.map(i=>`<div class="item"><span>${i.emoji} <button class="link" data-act="open" data-id="${i.id}">${esc(i.name)}</button> × ${i.qty}</span><span>${inr(i.price*i.qty)}</span></div>`).join('')}
+      ${!o.after?`<ol class="tl" aria-label="Delivery progress">${STAGES.map((s,i)=>`<li class="${i<=o.stage?'done':''} ${i===o.stage?'now':''}">${s}</li>`).join('')}</ol>
+        <p style="margin:0;color:var(--ink2);font-size:14px">${o.stage===4?'Delivered. You can return items within 7 days.':'Estimated delivery by '+fdate(o.at+o.eta*86400000)+'.'}</p>`
+      :`<p style="margin:12px 0 0">${o.after==='refunded'?`Refund of ${inr(o.total)} issued to your original payment method.`:o.after==='cancelled'?`Order cancelled. Refund of ${inr(o.total)} is being processed.`:`Return in progress${o.reason?' ('+esc(o.reason)+')':''}. Refund is issued after the item is received and checked.`}</p>`}
+      <div class="btns">
+        ${!o.after&&o.stage<2?`<button class="btn danger sm" data-act="cancel" data-id="${o.id}">Cancel order</button>`:''}
+        ${!o.after&&o.stage===4?`<button class="btn sec sm" data-act="return" data-id="${o.id}">Return items</button>`:''}
+        ${(o.after!=='refunded'&&(o.after||o.stage<4))?`<button class="btn sec sm" data-act="advance" data-id="${o.id}">Demo: move to next status</button>`:''}
+      </div>
+    </div>`).join('')
+  :`<div class="empty"><h3>No orders yet</h3><p>Orders you place will appear here with live tracking.</p><button class="btn" data-act="go" data-v="catalog">Start shopping</button></div>`}</div>`;
+}
+
+function denied(role){
+  return `<div class="wrap"><div class="empty" style="margin-top:24px"><h3>403 · Access restricted</h3><p>This area is only for ${role}s. In the live product, this is enforced on the server and sign-in uses separate credentials and multifactor authentication. In this prototype, use the “View as” bar at the bottom.</p><button class="btn" data-act="go" data-v="home">Back to shop</button></div></div>`;
+}
+function vSeller(){
+  if(S.role!=='seller')return denied('seller');
+  const mine=P.filter(p=>p.seller==='S1');
+  const myOrders=S.orders.filter(o=>o.items.some(i=>byId(i.id)&&byId(i.id).seller==='S1'));
+  const rev=124500+myOrders.reduce((s,o)=>s+o.items.filter(i=>byId(i.id)&&byId(i.id).seller==='S1').reduce((a,i)=>a+i.price*i.qty,0),0);
+  const low=mine.filter(p=>p.stock<=8&&p.status==='live').length;
+  const base=[12,18,9,22,15,27,19];base[6]+=myOrders.length;
+  const mx=Math.max(...base);
+  const days=[...Array(7)].map((_,i)=>new Date(Date.now()-(6-i)*86400000).toLocaleDateString('en-IN',{weekday:'short'}));
+  return `<div class="wrap"><div class="sec-h" style="margin-top:24px"><h2>Seller hub · Hyderabad Digital Hub</h2><span class="badge">✓ Verified seller</span></div>
+  <div class="kpis"><div><b>${inr(rev)}</b><span>Sales this month (demo base + new orders)</span></div><div><b>${myOrders.length}</b><span>New orders from this session</span></div><div><b>${low}</b><span>Products low on stock</span></div><div><b>${mine.filter(p=>p.status==='pending').length}</b><span>Listings awaiting approval</span></div></div>
+  <div class="panel"><h2>Orders per day</h2><div class="bars" role="img" aria-label="Orders per day over the last 7 days: ${base.join(', ')}">${base.map((v,i)=>`<div><span>${v}</span><i style="height:${Math.round(v/mx*100)}%"></i><span>${days[i]}</span></div>`).join('')}</div></div>
+  <div class="panel"><h2>Orders to fulfil</h2>
+    ${myOrders.length?myOrders.map(o=>`<div class="item"><div><strong>${o.id}</strong> · ${orderStatus(o)}<small>${o.items.map(i=>esc(i.name)+' × '+i.qty).join(', ')}</small></div>${!o.after&&o.stage===0?`<button class="btn sm" data-act="seller-step" data-id="${o.id}">Mark as packed</button>`:!o.after&&o.stage===1?`<button class="btn sm" data-act="seller-step" data-id="${o.id}">Mark as shipped</button>`:''}</div>`).join(''):'<p style="color:var(--ink2);margin:0">No new orders yet. Place an order as a customer, then switch back here to pack and ship it.</p>'}
+  </div>
+  <div class="panel"><h2>Inventory</h2>
+    ${mine.map(p=>`<div class="item"><div>${p.emoji} <strong>${esc(p.name)}</strong> ${p.status==='pending'?'<span class="sev md">Awaiting approval</span>':''}<small>${inr(p.price)} · ${p.stock<=8&&p.status==='live'?'Low stock':'Stock healthy'}</small></div><label>Stock <input class="num" type="number" min="0" max="9999" value="${p.stock}" data-stock="${p.id}" aria-label="Stock for ${esc(p.name)}"></label></div>`).join('')}
+  </div>
+  <div class="panel"><h2>Add a product</h2>
+    <form data-form="addprod">
+      <div class="row2"><div class="field"><label for="np">Product name</label><input id="np" required maxlength="80"></div>
+      <div class="field"><label for="nc">Category</label><select id="nc">${CATS.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}</select></div></div>
+      <div class="row2"><div class="field"><label for="nm">Price in ₹ (MRP)</label><input id="nm" type="number" min="1" max="500000" required></div>
+      <div class="field"><label for="ns">Opening stock</label><input id="ns" type="number" min="0" max="9999" required></div></div>
+      <button class="btn" type="submit">Submit for approval</button>
+      <p style="font-size:14px;color:var(--ink2);margin:8px 0 0">New listings are reviewed by an administrator before customers can see them.</p>
+    </form></div></div>`;
+}
+
+function vAdmin(){
+  if(S.role!=='admin')return denied('administrator');
+  const pend=P.filter(p=>p.status==='pending');
+  const openA=A.applicants.filter(a=>a.status==='pending').length+pend.length;
+  const openF=A.fraud.filter(f=>f.status==='open').length+A.flagged.filter(f=>f.status==='open').length;
+  const openT=A.tickets.filter(t=>t.status==='open').length;
+  const gmv=1842000+S.orders.reduce((s,o)=>s+o.total,0);
+  const tabs=[['approvals','Approvals ('+openA+')'],['trust','Fraud & reviews ('+openF+')'],['support','Support ('+openT+')'],['audit','Audit log ('+A.audit.length+')']];
+  let body='';
+  if(S.adminTab==='approvals'){
+    body=`<div class="panel"><h2>Seller applications</h2>${A.applicants.filter(a=>a.status==='pending').map(a=>`<div class="item"><div><strong>${esc(a.name)}</strong> · ${esc(a.kind)}<small>${esc(a.docs)}</small></div><div><button class="btn sm" data-act="adm" data-v="appr-app" data-id="${a.id}">Approve</button> <button class="btn danger sm" data-act="adm" data-v="rej-app" data-id="${a.id}">Reject</button></div></div>`).join('')||'<p style="color:var(--ink2);margin:0">No applications waiting.</p>'}</div>
+    <div class="panel"><h2>New product listings</h2>${pend.map(p=>`<div class="item"><div><strong>${esc(p.name)}</strong> · ${inr(p.price)}<small>${esc(SELLERS[p.seller].name)} · ${esc(CATS.find(c=>c.id===p.cat).name)}</small></div><div><button class="btn sm" data-act="adm" data-v="appr-prod" data-id="${p.id}">Approve</button> <button class="btn danger sm" data-act="adm" data-v="rej-prod" data-id="${p.id}">Reject</button></div></div>`).join('')||'<p style="color:var(--ink2);margin:0">No listings waiting. Add one from the Seller hub to see it here.</p>'}</div>`;
+  }else if(S.adminTab==='trust'){
+    body=`<div class="panel"><h2>Fraud alerts</h2>${A.fraud.filter(f=>f.status==='open').map(f=>`<div class="item"><div><span class="sev ${f.sev}">${f.sev==='hi'?'High':'Medium'}</span> <strong>${esc(f.what)}</strong><small>Suggested: ${esc(f.action)}</small></div><div><button class="btn sm" data-act="adm" data-v="fraud-act" data-id="${f.id}">Apply suggestion</button> <button class="btn sec sm" data-act="adm" data-v="fraud-dis" data-id="${f.id}">Dismiss</button></div></div>`).join('')||'<p style="color:var(--ink2);margin:0">No open alerts.</p>'}<p style="font-size:14px;color:var(--ink2);margin:10px 0 0">Alerts are suggestions. A person reviews each one before a customer is restricted.</p></div>
+    <div class="panel"><h2>Flagged reviews</h2>${A.flagged.filter(f=>f.status==='open').map(f=>`<div class="item"><div><strong>${esc(f.product)}</strong>: “${esc(f.text)}”<small>Why flagged: ${esc(f.why)}</small></div><div><button class="btn danger sm" data-act="adm" data-v="rev-rm" data-id="${f.id}">Remove review</button> <button class="btn sec sm" data-act="adm" data-v="rev-keep" data-id="${f.id}">Keep</button></div></div>`).join('')||'<p style="color:var(--ink2);margin:0">No flagged reviews.</p>'}</div>`;
+  }else if(S.adminTab==='support'){
+    body=`<div class="panel"><h2>Support and dispute queue</h2>${A.tickets.map(t=>`<div class="item"><div><strong>${esc(t.id)}</strong> · ${esc(t.who)}<small>${esc(t.what)}</small></div>${t.status==='open'?`<button class="btn sm" data-act="adm" data-v="tkt" data-id="${t.id}">Mark resolved</button>`:'<span class="badge">Resolved</span>'}</div>`).join('')}<p style="font-size:14px;color:var(--ink2);margin:10px 0 0">Reports filed with “Report a problem” on a product page land here.</p></div>`;
+  }else{
+    body=`<div class="panel"><h2>Audit log</h2>${A.audit.length?A.audit.slice().reverse().map(a=>`<div class="item"><div>${esc(a.what)}<small>${esc(a.who)} · ${new Date(a.t).toLocaleTimeString('en-IN')}</small></div></div>`).join(''):'<p style="color:var(--ink2);margin:0">Every action taken in this dashboard is recorded here. Nothing yet.</p>'}</div>`;
+  }
+  return `<div class="wrap"><div class="sec-h" style="margin-top:24px"><h2>Administrator dashboard</h2><span class="badge">✓ MFA verified</span></div>
+  <div class="kpis"><div><b>${342+S.orders.length}</b><span>Orders today (demo base + new)</span></div><div><b>${inr(gmv)}</b><span>Sales today (demo)</span></div><div><b>${openA}</b><span>Waiting for approval</span></div><div><b>${openF}</b><span>Open trust and fraud items</span></div></div>
+  <div class="tabs" role="tablist">${tabs.map(([id,l])=>`<button role="tab" aria-selected="${S.adminTab===id}" data-act="admtab" data-v="${id}">${l}</button>`).join('')}</div>${body}</div>`;
+}
+function audit(what){A.audit.push({t:Date.now(),who:'admin@nexora (MFA verified)',what})}
+
+/* ---------- render ---------- */
+function render(){
+  const v=S.view;
+  const views={home:vHome,catalog:vCatalog,product:vProduct,compare:vCompare,wishlist:vWishlist,checkout:vCheckout,orders:vOrders,seller:vSeller,admin:vAdmin};
+  $('#app').innerHTML=(views[v]||vHome)();
+  if(v==='catalog'){if(innerWidth<=860){const d=$('#fdet');if(d)d.open=false}updateGrid()}
+  updateChrome();
+}
+function go(view,arg){
+  S.view=view;S.arg=arg||null;S.prev=S.prev||[];
+  closeModal();render();window.scrollTo(0,0);
+}
+function updateChrome(){
+  $('#cW').textContent=S.wish.length||'';
+  const n=S.cart.reduce((s,c)=>s+c.qty,0);$('#cC').textContent=n||'';
+  $('#acct').textContent=S.user?('Hi, '+S.user.name.split(' ')[0]):'Sign in';
+  const items=[['all','All products']].concat(CATS.map(c=>[c.id,c.name]));
+  let nav=items.map(([id,l])=>`<button data-act="cat" data-v="${id}" aria-current="${S.view==='catalog'&&S.f.cat===id}">${l}</button>`).join('');
+  nav+='<span class="sp"></span>';
+  if(S.role==='seller')nav+=`<button data-act="go" data-v="seller" aria-current="${S.view==='seller'}">Seller hub</button>`;
+  if(S.role==='admin')nav+=`<button data-act="go" data-v="admin" aria-current="${S.view==='admin'}">Admin</button>`;
+  $('#catnav').innerHTML=nav;
+  document.querySelectorAll('.demo [data-act=role]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===S.role)));
+  const t=$('#tray');
+  if(S.cmp.length&&S.view!=='compare'){
+    t.innerHTML=`<div class="tray"><div class="wrap"><strong>Compare (${S.cmp.length}/3)</strong>${S.cmp.map(id=>{const p=byId(id);return `<span class="pill">${esc(p.name)} <button class="xbtn" data-act="cmp" data-id="${id}" aria-label="Remove ${esc(p.name)} from comparison">×</button></span>`}).join('')}<button class="btn sm" data-act="go" data-v="compare" ${S.cmp.length<2?'disabled':''}>Compare now</button></div></div>`;
+  }else t.innerHTML='';
+}
+
+/* ---------- cart drawer ---------- */
+function openCart(){
+  const items=cartItems(),t=totals(items,S.coupon);
+  const body=items.length?items.map(({p,qty})=>`<div class="line"><div class="tile" style="--h:${p.hue}" aria-hidden="true">${p.emoji}</div>
+    <div><strong style="font-size:15px">${esc(p.name)}</strong><br><span style="color:var(--ink2);font-size:14px">${inr(p.price)} each</span><br>
+    <span class="qty"><button data-act="qty" data-id="${p.id}" data-v="-1" aria-label="Decrease quantity">−</button><span aria-live="polite">${qty}</span><button data-act="qty" data-id="${p.id}" data-v="1" aria-label="Increase quantity">+</button></span></div>
+    <div style="text-align:right"><strong>${inr(p.price*qty)}</strong><br><button class="link" data-act="rm" data-id="${p.id}" style="font-size:14px">Remove</button></div></div>`).join('')
+  :`<div class="empty" style="margin-top:12px"><h3>Your cart is empty</h3><p>Add something you like and it will show up here.</p></div>`;
+  const foot=items.length?`
+    <form data-form="coupon" style="display:flex;gap:8px;margin-bottom:10px"><label class="sr" for="cpn">Coupon code</label><input id="cpn" placeholder="Coupon code (try NEXORA10)" style="flex:1;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)" value="${S.coupon||''}"><button class="btn sec sm" type="submit">Apply</button></form>
+    ${breakdownRows(t.sub,t.ship,t.gst,t.cd,0)}
+    ${t.sub-t.cd<499?`<p style="font-size:14px;margin:6px 0">Add ${inr(499-(t.sub-t.cd))} more for free delivery.</p>`:''}
+    <button class="btn" style="width:100%;margin-top:8px" data-act="checkout">Go to checkout</button>`:'';
+  openModal(`<aside class="dlg drawer" role="dialog" aria-modal="true" aria-label="Shopping cart"><header><h2 style="font-size:20px">Your cart</h2><button class="xbtn" data-act="closeModal" aria-label="Close cart">×</button></header><div class="body">${body}</div>${items.length?`<footer>${foot}</footer>`:''}</aside>`,'right');
+}
+
+/* ---------- auth ---------- */
+const L={tab:'in',step:'form',email:'',name:'',tries:0,lockUntil:0};
+function strength(pw){let s=0;if(pw.length>=8)s++;if(pw.length>=12)s++;if(/[A-Z]/.test(pw)&&/[a-z]/.test(pw))s++;if(/\d/.test(pw))s++;if(/[^A-Za-z0-9]/.test(pw))s++;return s}
+function openLogin(){
+  if(S.user){
+    openModal(`<div class="dlg" role="dialog" aria-modal="true" aria-label="Account"><h2 style="margin-bottom:6px">${esc(S.user.name)}</h2><p style="color:var(--ink2);margin:0 0 14px">${esc(S.user.email)}</p>
+      <p><span class="status">${S.points>=500?'Gold':'Silver'} member · ${S.points} Nexora Points</span></p>
+      <p style="font-size:14px;color:var(--ink2)">Active session: this browser (just now). In the live product you can review and sign out other devices here.</p>
+      <div class="btns"><button class="btn" data-act="go" data-v="orders">View orders</button><button class="btn sec" data-act="logout">Sign out</button><button class="btn sec" data-act="closeModal">Close</button></div></div>`);
+    return;
+  }
+  if(L.step==='otp'){
+    openModal(`<div class="dlg" role="dialog" aria-modal="true" aria-label="Verify your account"><h2 style="margin-bottom:8px">Verify it’s you</h2>
+      <p style="margin:0 0 12px">We sent a 6-digit code to <strong>${esc(L.email)}</strong>.</p><div class="hint" style="margin-bottom:12px">Prototype: no message is sent. Use code <strong>123456</strong>.</div>
+      <form data-form="otp"><div class="field"><label for="otp">6-digit code</label><input id="otp" inputmode="numeric" maxlength="6" autocomplete="one-time-code"><div class="err" id="e-otp"></div></div>
+      <div class="btns"><button class="btn" type="submit">Verify and continue</button><button class="btn sec" type="button" data-act="login-back">Back</button></div></form></div>`);
+    return;
+  }
+  const reg=L.tab==='up';
+  openModal(`<div class="dlg" role="dialog" aria-modal="true" aria-label="Sign in or create account"><div style="display:flex;justify-content:space-between;align-items:center"><h2>${reg?'Create your account':'Welcome back'}</h2><button class="xbtn" data-act="closeModal" aria-label="Close">×</button></div>
+    <div class="tabs" role="tablist" style="margin-top:12px"><button role="tab" aria-selected="${!reg}" data-act="ltab" data-v="in">Sign in</button><button role="tab" aria-selected="${reg}" data-act="ltab" data-v="up">Create account</button></div>
+    <form data-form="login" novalidate>
+      ${reg?`<div class="field"><label for="ln">Full name</label><input id="ln" autocomplete="name" value="${esc(L.name)}"><div class="err" id="e-ln"></div></div>`:''}
+      <div class="field"><label for="le">Email</label><input id="le" type="email" autocomplete="email" value="${esc(L.email)}"><div class="err" id="e-le"></div></div>
+      <div class="field"><label for="lp">Password</label><input id="lp" type="password" autocomplete="${reg?'new-password':'current-password'}"><div class="err" id="e-lp"></div>${reg?'<div class="meter"><i id="pm"></i></div><small id="pt" style="color:var(--ink2)">Use 8+ characters with upper and lower case, a number and a symbol.</small>':''}</div>
+      <button class="btn" type="submit" style="width:100%">${reg?'Create account':'Sign in'}</button>
+    </form>
+    <p style="font-size:13px;color:var(--ink2);margin:12px 0 0">Prototype: passwords are not stored or checked. The live product hashes passwords with Argon2id on the server, supports Google sign-in and optional multifactor authentication.</p></div>`);
+}
+
+/* ---------- assistant ---------- */
+function runAssist(text){
+  const out=$('#aout');if(!out)return;
+  if(!text.trim()){out.innerHTML='<div class="anote">Type what you’re looking for, like “laptop for study under 40000”.</div>';return}
+  const r=smartSearch(text);
+  const top=r.list.slice(0,3);
+  if(!top.length){out.innerHTML=`<div class="arow-res" style="grid-template-columns:1fr"><div><strong>No close match found.</strong><small>Try a higher budget or fewer details, or browse all products.</small></div></div>`;return}
+  out.innerHTML=top.map((p,i)=>{
+    const first=Object.values(p.specs)[0];
+    const why=[r.budget?`Within your ${inr(r.budget)} budget`:'',`rated ${p.rating}★ by ${p.count.toLocaleString('en-IN')} buyers`,first].filter(Boolean).join(' · ');
+    return `<div class="arow-res"><div class="tile" style="--h:${p.hue}" aria-hidden="true">${p.emoji}</div><div><strong>${i===0?'Best match: ':''}${esc(p.name)}</strong> · ${inr(p.price)}<small>${esc(why)}</small></div><div style="display:grid;gap:6px"><button class="btn sm" data-act="open" data-id="${p.id}">View</button><button class="btn sec sm" data-act="add" data-id="${p.id}">Add</button></div></div>`;
+  }).join('')+`<div class="anote">Prototype assistant: it matches your words to product details with simple rules. The live version would use an AI model and your shopping history, with your consent.</div>`;
+}
+
+/* ---------- actions ---------- */
+function addToCart(id,qty){
+  const p=byId(id);if(!p||p.stock===0)return false;
+  const c=S.cart.find(x=>x.id===id);
+  if(c){if(c.qty>=p.stock){toast('Only '+p.stock+' available');return false}c.qty+=qty||1}else S.cart.push({id,qty:qty||1});
+  save();updateChrome();return true;
+}
+function toggle(arr,id,max){const i=arr.indexOf(id);if(i>=0){arr.splice(i,1);return false}if(max&&arr.length>=max)return null;arr.push(id);return true}
+function act(name,el,e){
+  const id=el.dataset.id,v=el.dataset.v;
+  switch(name){
+    case 'go':go(v);break;
+    case 'back':go(S.view==='product'||S.view==='compare'?'catalog':'home');break;
+    case 'cat':S.f.cat=v;S.q='';$('#sq').value='';go('catalog');break;
+    case 'open':go('product',id);break;
+    case 'add':if(addToCart(id)){toast('Added to cart');if(S.view==='home'||true)render()}break;
+    case 'buynow':if(addToCart(id)){go('checkout')}break;
+    case 'wish':{const r=toggle(S.wish,id);save();toast(r?'Saved to wishlist':'Removed from wishlist');render();break}
+    case 'cmp':{const r=toggle(S.cmp,id,3);if(r===null){toast('You can compare up to 3 products');break}render();break}
+    case 'clearcmp':S.cmp=[];go('catalog');break;
+    case 'alert':{const r=toggle(S.alerts,id);save();toast(r?'We’ll tell you about price drops and restocks (demo)':'Alerts turned off');break}
+    case 'pin':{const z=$('#pin').value.trim(),o=$('#pinout'),p=byId(id);
+      if(!/^[1-9]\d{5}$/.test(z)){o.style.color='var(--coral)';o.textContent='Enter a valid 6-digit pincode.';break}
+      const d=z.startsWith('5')?Math.max(1,p.days-2):p.days;o.style.color='var(--ok)';o.textContent='Delivery to '+z+' by '+fdate(Date.now()+d*86400000)+(p.price>=499?', free.':', ₹49 delivery.');break}
+    case 'cart':openCart();break;
+    case 'qty':{const c=S.cart.find(x=>x.id===id),p=byId(id);if(!c)break;const n=c.qty+(+v);if(n<1){S.cart=S.cart.filter(x=>x.id!==id)}else if(n>p.stock){toast('Only '+p.stock+' available');break}else c.qty=n;save();openCart();updateChrome();if(S.view==='checkout')render();break}
+    case 'rm':S.cart=S.cart.filter(x=>x.id!==id);save();openCart();updateChrome();if(S.view==='checkout')render();break;
+    case 'checkout':if(!S.user){S.pending='checkout';L.tab='in';L.step='form';openLogin();toast('Sign in to continue to checkout')}else go('checkout');break;
+    case 'account':openLogin();break;
+    case 'ltab':L.tab=v;L.step='form';openLogin();break;
+    case 'login-back':L.step='form';openLogin();break;
+    case 'logout':S.user=null;save();closeModal();toast('Signed out');render();break;
+    case 'closeModal':closeModal();break;
+    case 'scrim':if(e.target===el)closeModal();break;
+    case 'theme':{const d=document.documentElement;const dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;d.dataset.theme=dark?'light':'dark';store.set('theme',d.dataset.theme);break}
+    case 'clearf':S.f={cat:'all',max:80000,rating:0,brands:[],authorized:false,eco:false,instock:false,sort:'relevance'};S.q='';$('#sq').value='';render();break;
+    case 'clearq':S.q='';$('#sq').value='';render();break;
+    case 'assist':runAssist(($('#aq')||{}).value||'');break;
+    case 'assist-ex':$('#aq').value=v;runAssist(v);break;
+    case 'cancel':{const o=S.orders.find(x=>x.id===id);if(o&&!o.after&&o.stage<2){o.after='cancelled';o.items.forEach(i=>{const p=byId(i.id);if(p)p.stock+=i.qty});S.points=Math.max(0,S.points-o.points);save();toast('Order cancelled');render()}break}
+    case 'return':{
+      openModal(`<div class="dlg" role="dialog" aria-modal="true" aria-label="Return items"><h2 style="margin-bottom:10px">Return items from ${esc(id)}</h2><form data-form="return" data-id="${esc(id)}"><div class="field"><label for="rr">Reason</label><select id="rr"><option>Damaged or defective</option><option>Not as described</option><option>Wrong item received</option><option>No longer needed</option></select></div><div class="btns"><button class="btn" type="submit">Request return</button><button class="btn sec" type="button" data-act="closeModal">Cancel</button></div></form></div>`);break}
+    case 'advance':{const o=S.orders.find(x=>x.id===id);if(!o)break;
+      if(!o.after){if(o.stage<4){o.stage++}}
+      else if(o.after==='return-requested')o.after='return-pickedup';
+      else if(o.after==='return-pickedup'||o.after==='cancelled')o.after='refunded';
+      if(o.after==='refunded'&&o.reason!==undefined){o.items.forEach(i=>{const p=byId(i.id);if(p)p.stock+=i.qty});S.points=Math.max(0,S.points-o.points)}
+      save();render();break}
+    case 'seller-step':{const o=S.orders.find(x=>x.id===id);if(o&&!o.after&&o.stage<2){o.stage++;save();toast(o.stage===1?'Marked as packed':'Marked as shipped');render()}break}
+    case 'role':setRole(v);break;
+    case 'admtab':S.adminTab=v;render();break;
+    case 'adm':adminAction(v,id);break;
+    case 'report':openModal(`<div class="dlg" role="dialog" aria-modal="true" aria-label="Report a problem"><h2 style="margin-bottom:10px">Report a problem</h2><form data-form="report" data-id="${esc(id)}"><div class="field"><label for="rp">What’s wrong?</label><select id="rp"><option>Looks counterfeit</option><option>Unsafe product</option><option>Misleading description or price</option><option>Something else</option></select></div><div class="field"><label for="rd">Details</label><textarea id="rd" rows="3" maxlength="400"></textarea></div><div class="btns"><button class="btn" type="submit">Send report</button><button class="btn sec" type="button" data-act="closeModal">Cancel</button></div></form></div>`);break;
+    case 'reset':store.clear();location.reload();break;
+  }
+}
+function setRole(r){
+  if(r===S.role)return;
+  if(r==='admin'){
+    openModal(`<div class="dlg" role="dialog" aria-modal="true" aria-label="Administrator verification"><h2 style="margin-bottom:8px">Administrator sign-in</h2><p style="margin:0 0 12px">Administrators must pass multifactor authentication. There is no public way to register as an administrator.</p><div class="hint" style="margin-bottom:12px">Prototype: use code <strong>000000</strong>.</div><form data-form="mfa"><div class="field"><label for="mfa">Authenticator code</label><input id="mfa" inputmode="numeric" maxlength="6" autocomplete="one-time-code"><div class="err" id="e-mfa"></div></div><div class="btns"><button class="btn" type="submit">Verify</button><button class="btn sec" type="button" data-act="closeModal">Cancel</button></div></form></div>`);
+    return;
+  }
+  S.role=r;closeModal();
+  if(r==='seller')go('seller');else go('home');
+}
+function adminAction(v,id){
+  const rm=(arr,key)=>arr.find(x=>x.id===id);
+  if(v==='appr-app'){const a=rm(A.applicants);a.status='approved';audit('Approved seller application: '+a.name)}
+  else if(v==='rej-app'){const a=rm(A.applicants);a.status='rejected';audit('Rejected seller application: '+a.name)}
+  else if(v==='appr-prod'){const p=byId(id);p.status='live';audit('Approved listing: '+p.name)}
+  else if(v==='rej-prod'){const p=byId(id);audit('Rejected listing: '+p.name);P=P.filter(x=>x.id!==id)}
+  else if(v==='fraud-act'){const f=rm(A.fraud);f.status='done';audit('Applied: '+f.action)}
+  else if(v==='fraud-dis'){const f=rm(A.fraud);f.status='dismissed';audit('Dismissed alert: '+f.what)}
+  else if(v==='rev-rm'){const f=rm(A.flagged);f.status='removed';audit('Removed flagged review on '+f.product)}
+  else if(v==='rev-keep'){const f=rm(A.flagged);f.status='kept';audit('Kept flagged review on '+f.product+' after review')}
+  else if(v==='tkt'){const t=rm(A.tickets);t.status='resolved';audit('Resolved '+t.id)}
+  render();toast('Done. Recorded in the audit log.');
+}
+
+/* ---------- form handling ---------- */
+function setErr(id,msg){const e=$('#e-'+id);if(e)e.textContent=msg||'';return !msg}
+document.addEventListener('submit',e=>{
+  const f=e.target.dataset.form;if(!f)return;e.preventDefault();
+  if(f==='login'){
+    const reg=L.tab==='up';
+    const email=$('#le').value.trim(),pw=$('#lp').value,name=reg?$('#ln').value.trim():'';
+    let ok=true;
+    if(reg)ok=setErr('ln',name.length<2?'Enter your full name.':'')&&ok;
+    ok=setErr('le',/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)?'':'Enter a valid email address.')&&ok;
+    ok=setErr('lp',(reg?strength(pw)>=3&&pw.length>=8:pw.length>=8)?'':(reg?'Choose a stronger password: 8+ characters with upper and lower case plus a number or symbol.':'Enter your password (at least 8 characters).'))&&ok;
+    if(!ok)return;
+    L.email=email;L.name=name||email.split('@')[0];L.step='otp';L.tries=0;openLogin();
+  }else if(f==='otp'){
+    if(Date.now()<L.lockUntil){setErr('otp','Too many attempts. Try again in '+Math.ceil((L.lockUntil-Date.now())/1000)+' seconds.');return}
+    const code=$('#otp').value.trim();
+    if(code!=='123456'){L.tries++;if(L.tries>=5){L.lockUntil=Date.now()+30000;L.tries=0;setErr('otp','Too many attempts. Locked for 30 seconds.')}else setErr('otp','That code isn’t right. '+(5-L.tries)+' attempts left.');return}
+    S.user={name:L.name.replace(/\b\w/g,c=>c.toUpperCase()),email:L.email};L.step='form';save();closeModal();toast('Signed in. Welcome to Nexora!');
+    if(S.pending==='checkout'){S.pending=null;go('checkout')}else render();
+  }else if(f==='mfa'){
+    if($('#mfa').value.trim()!=='000000'){setErr('mfa','That code isn’t right.');return}
+    S.role='admin';closeModal();audit('Administrator signed in with MFA');go('admin');
+  }else if(f==='coupon'){
+    const c=$('#cpn').value.trim().toUpperCase();
+    if(!c){S.coupon=null;openCart();return}
+    if(c==='NEXORA10'){const t=totals(cartItems(),'NEXORA10');if(t.sub<999){S.coupon=null;openCart();toast('NEXORA10 needs a cart of ₹999 or more');return}S.coupon=c;openCart();toast('Coupon applied: 10% off, up to ₹500')}
+    else{S.coupon=null;openCart();toast('That coupon code isn’t valid')}
+    if(S.view==='checkout')render();
+  }else if(f==='checkout'){
+    if(S.placing)return;
+    const v=id=>$('#'+id).value.trim();
+    let ok=true;
+    ok=setErr('cn',v('cn').length<2?'Enter your full name.':'')&&ok;
+    ok=setErr('cp',/^[6-9]\d{9}$/.test(v('cp'))?'':'Enter a 10-digit Indian mobile number.')&&ok;
+    ok=setErr('ca',v('ca').length<6?'Enter your full address.':'')&&ok;
+    ok=setErr('cc',v('cc').length<2?'Enter your city.':'')&&ok;
+    ok=setErr('cz',/^[1-9]\d{5}$/.test(v('cz'))?'':'Enter a valid 6-digit pincode.')&&ok;
+    const pay=document.querySelector('input[name=pay]:checked').value;S.pay=pay;
+    const items=cartItems(),t=totals(items,S.coupon);
+    if(pay==='upi')ok=setErr('upi',/^[\w.\-]{2,}@[a-zA-Z]{2,}$/.test(v('upi'))?'':'Enter a valid UPI ID like name@bank.')&&ok;
+    if(pay==='cod'&&t.total>50000){toast('Cash on delivery is available up to ₹50,000. Choose UPI or card.');ok=false}
+    if(items.some(({p,qty})=>qty>p.stock)){toast('Some items are no longer available in that quantity. Check your cart.');ok=false}
+    if(!ok){const first=document.querySelector('.err:not(:empty)');if(first)first.previousElementSibling.focus();return}
+    S.placing=true;const b=$('#placeBtn');b.disabled=true;b.textContent='Confirming payment…';
+    setTimeout(()=>{
+      const o={id:'NX'+Date.now().toString().slice(-7),at:Date.now(),stage:0,after:null,pay,total:t.total,points:t.points,eta:Math.max(...items.map(x=>x.p.days)),
+        items:items.map(({p,qty})=>({id:p.id,name:p.name,price:p.price,qty,emoji:p.emoji})),addr:v('ca')+', '+v('cc')+' '+v('cz')};
+      items.forEach(({p,qty})=>{p.stock-=qty});
+      S.orders.unshift(o);S.points+=t.points;S.cart=[];S.coupon=null;S.placing=false;save();
+      toast('Order '+o.id+' placed. You earned '+t.points+' points.');go('orders');
+    },1400);
+  }else if(f==='return'){
+    const o=S.orders.find(x=>x.id===e.target.dataset.id);
+    if(o&&!o.after&&o.stage===4){o.after='return-requested';o.reason=$('#rr').value;save();closeModal();toast('Return requested');render()}
+  }else if(f==='review'){
+    const pid=e.target.dataset.id,text=$('#rt').value.trim();if(!text)return;
+    (S.reviews[pid]=S.reviews[pid]||[]).unshift({name:S.user.name,stars:+$('#rs').value,text,verified:true});save();toast('Review posted. Thank you!');render();
+  }else if(f==='addprod'){
+    const name=$('#np').value.trim(),cat=$('#nc').value,mrp=+$('#nm').value,stock=+$('#ns').value;
+    if(!name||!(mrp>0)||stock<0)return;
+    const p=mk(name,'Hyderabad Digital Hub',cat,mrp,0,4.0,0,'S1',CATS.find(c=>c.id===cat).ic,200,stock,4,'', false,cat+' new',{'Listing status':'Awaiting approval'});
+    p.status='pending';p.id='p'+(100+P.length);P.push(p);toast('Submitted for approval');render();
+  }else if(f==='report'){
+    const p=byId(e.target.dataset.id);
+    const idn='TKT-'+(1045+A.tickets.length-3);
+    A.tickets.push({id:idn,who:'Customer report',what:$('#rp').value+' on “'+p.name+'”'+($('#rd').value.trim()?': '+$('#rd').value.trim():''),status:'open'});
+    closeModal();toast('Report received. Reference '+idn);
+  }
+});
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{
+  const el=e.target.closest('[data-act]');if(!el)return;
+  if(el.tagName==='A')e.preventDefault();
+  if(el.type==='checkbox'&&el.dataset.act==='alert'){act('alert',el,e);return}
+  act(el.dataset.act,el,e);
+  if(!e.target.closest('#sform'))$('#sugg').hidden=true;
+});
+document.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.id==='lp'&&$('#pm')){const s=strength(t.value);$('#pm').style.width=(s*20)+'%';$('#pm').style.background=s<3?'var(--coral)':s<5?'var(--saffron)':'var(--ok)';$('#pt').textContent=s<3?'Weak. Add length, capitals, numbers or symbols.':s<5?'Good. A longer password with a symbol is even better.':'Strong password.'}
+  if(t.closest&&t.closest('.filters')&&(t.id==='fmax'))readFilters();
+  if(t.id==='sq')suggest(t.value);
+});
+document.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.closest&&t.closest('.filters')||t.id==='fsort')readFilters();
+  if(t.name==='pay'){S.pay=t.value;const u=$('#upiF');if(u)u.hidden=t.value!=='upi'}
+  if(t.dataset&&t.dataset.stock){const p=byId(t.dataset.stock);p.stock=Math.max(0,Math.min(9999,parseInt(t.value,10)||0));toast('Stock updated for '+p.name);render()}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();$('#sugg').hidden=true}
+  if(e.key==='Enter'&&e.target.id==='aq'){e.preventDefault();runAssist(e.target.value)}
+});
+document.addEventListener('click',e=>{if(!e.target.closest('#sform'))$('#sugg').hidden=true});
+
+function suggest(q){
+  const u=$('#sugg');q=q.trim().toLowerCase();
+  if(q.length<2){u.hidden=true;return}
+  const m=live().filter(p=>(p.name+' '+p.brand).toLowerCase().includes(q)).slice(0,5);
+  if(!m.length){u.hidden=true;return}
+  u.innerHTML=m.map(p=>`<li><button type="button" data-act="open" data-id="${p.id}">${p.emoji} ${esc(p.name)} <small style="color:var(--ink2)">in ${esc(CATS.find(c=>c.id===p.cat).name)}</small></button></li>`).join('');
+  u.hidden=false;
+}
+$('#sform').addEventListener('submit',e=>{
+  e.preventDefault();S.q=$('#sq').value.trim();S.f.cat='all';$('#sugg').hidden=true;go('catalog');
+});
+
+/* ---------- boot ---------- */
+(function(){const th=store.get('theme',null);if(th)document.documentElement.dataset.theme=th})();
+render();
+</script>
+</body>
+</html>
